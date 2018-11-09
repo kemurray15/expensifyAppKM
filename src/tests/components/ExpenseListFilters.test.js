@@ -4,6 +4,7 @@ import { ExpenseListFilters } from '../../components/ExpenseListFilters'
 import { filters, altFilters } from '../fixtures/filters'
 import moment from 'moment'
 
+
 let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, onFocusChange, wrapper;
 
 beforeEach( () => {
@@ -80,6 +81,6 @@ test('should handle date changes', () => {
 test('should handle date focus changes', () => {
     const calendarFocused = 'startDate'
     wrapper.find('DateRangePicker').prop('onFocusChange')(calendarFocused);
-    expect(wrapper.state('calendarFocused').toBe(calendarFocused));
+    expect(wrapper.state('calendarFocused')).toBe(calendarFocused);
 }) 
 
