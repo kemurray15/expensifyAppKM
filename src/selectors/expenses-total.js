@@ -1,6 +1,1 @@
-export default (expenses) => {
-    return expenses.reduce((acc, currentValue) => {
-        return acc + currentValue.amount
-    }, 0); 
-}
-
+export default (expenses) => expenses.reduce((acc, currentValue) =>  acc + currentValue.amount, 0); 
