@@ -51,3 +51,34 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+
+//SET_EXPENSE (get the array back from firebase and update the store and done)
+
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        
+        return database.ref('expenses').once('value').then((snapshot) => {
+            const expenses = [];
+            
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            
+            console.log(expenses);
+            dispatch(setExpenses(expenses));
+        });
+    };
+};
+
+
+//fetch all expense data once
+//parse the data into an array (check firebase.js file)
+//dispatch set expenses so that the store actually gets updated

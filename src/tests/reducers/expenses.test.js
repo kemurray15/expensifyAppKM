@@ -79,3 +79,38 @@ test('should not edit an expense', () => {
     const state = expensesReducer(expenses, action)
     expect(state).toEqual(expenses)
 })
+
+test('should set expenses', () => {
+    const initialExpenses = [{
+        id: "1",
+        description: 'rent',
+        note: 'November',
+        amount: 120000,
+        createdAt: 0
+    }, {
+        id: "2",
+        description: 'car',
+        note: 'November',
+        amount: 45000,
+        createdAt: 0
+    }]
+    
+    let action = {
+        type: 'SET_EXPENSES',
+        expenses: initialExpenses
+    }
+
+    let state = expensesReducer([], action)
+    console.log('state 1', state)
+    expect(state).toEqual(initialExpenses)
+
+    action = {
+        type: 'SET_EXPENSES',
+        expenses: expenses
+    }
+    
+     state = expensesReducer(initialExpenses, action)
+    console.log('state 2', state)
+    expect(state).toEqual(expenses)
+
+})
